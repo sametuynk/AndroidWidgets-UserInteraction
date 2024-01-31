@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.androiduserinteraction.databinding.ActivityAlertViewBinding;
@@ -42,14 +44,20 @@ public class AlertViewActivity extends AppCompatActivity {
         });
 
         binding.buttonOzel.setOnClickListener(v -> {
+
+            View tasarim=getLayoutInflater().inflate(R.layout.alert_tasarim,null);
+            EditText editTextAlert=tasarim.findViewById(R.id.editTextAlert);
+
             AlertDialog.Builder ad=new AlertDialog.Builder(AlertViewActivity.this);
             ad.setMessage("Özel Mesaj");
+            ad.setView(tasarim);
             ad.setTitle("Başlık");
             ad.setIcon(R.drawable.resim2);
             ad.setPositiveButton("Özel Tamam", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(AlertViewActivity.this, "Özel Tamam Tıklandı", Toast.LENGTH_SHORT).show();
+                    String gelenVeri=editTextAlert.getText().toString();
+                    Toast.makeText(AlertViewActivity.this, "Alınan Veri : "+gelenVeri, Toast.LENGTH_SHORT).show();
                 }
             });
             ad.setNegativeButton("Özel İptal", new DialogInterface.OnClickListener() {
