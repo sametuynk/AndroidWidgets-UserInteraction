@@ -13,10 +13,13 @@
         android:theme="@style/Theme.AndroidUserInteraction"
         tools:targetApi="31">
         <activity
+            android:name=".AlertViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".AlertViewActivity"
+            android:name=".SnackBarActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
